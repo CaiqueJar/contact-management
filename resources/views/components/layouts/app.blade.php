@@ -13,12 +13,19 @@
 
 <body>
 
-    @if(session('success'))
-        <div class="alert alert--success">
-            <x-bi-check-circle-fill />
-            {{ session('success') }}
-        </div>
-    @endif
+  @if (session('success'))
+    <div class="alert alert--success">
+      <x-bi-check-circle-fill />
+      {{ session('success') }}
+    </div>
+  @endif
+
+  @if ($errors->any())
+    <div class="alert alert--error">
+      <x-bi-x-circle-fill />
+      {{ $errors->first() }}
+    </div>
+  @endif
 
   <x-header />
 

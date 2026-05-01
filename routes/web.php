@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +19,16 @@ Route::get('/', function () {
     return view('pages.home');
 })->name('home');
 
-Route::resource('contacts', ContactController::class);
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::resource('contacts', ContactController::class)
+    ->except(['index'])
+    ->middleware('auth');
+
+Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
+
 
 Route::fallback(function () {
     return view('errors.404');

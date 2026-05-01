@@ -11,6 +11,22 @@
                     <li class="header-links__item">
                         <a href="{{ route('contacts.index') }}">Contacts</a>
                     </li>
+
+                    @auth
+                        <li class="header-links__item">
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn--link btn--white">
+                                    <x-bi-box-arrow-in-left />
+                                    Logout
+                                </button>
+                            </form>
+                        </li>
+                    @else
+                        <li class="header-links__item">
+                            <a href="{{ route('login') }}">Login</a>
+                        </li>
+                    @endauth
                 </ul>
             </nav>
         </div>
