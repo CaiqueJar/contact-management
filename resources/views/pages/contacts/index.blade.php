@@ -36,7 +36,7 @@
                 style="display: inline-block;">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn--link btn--danger">
+                <button type="submit" class="btn btn--link btn--danger" onclick="return confirm('Are you sure you want to delete this contact?')">
                     <x-bi-trash />
                     Delete
                 </button>

@@ -405,6 +405,13 @@ h6 {
     margin: 1rem 0;
 }
 
+.show-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
 /* Header Styles */
 .header {
     width: 100%;
